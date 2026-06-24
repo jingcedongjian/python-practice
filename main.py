@@ -12,7 +12,9 @@ k = 3
 Valid subarrays:
 [1, 2]
 [3]
-[2, 3, -1, -1?]  # not in this example
+
+Answer:
+2
 """
 
 from typing import List
@@ -23,20 +25,20 @@ def count_subarrays_sum_k(nums: List[int], k: int) -> int:
     Count the number of continuous subarrays whose sum equals k.
 
     Core idea:
-    current_prefix - previous_prefix = k
+        current_prefix - previous_prefix = k
 
-    So:
-    previous_prefix = current_prefix - k
+    Therefore:
+        previous_prefix = current_prefix - k
 
-    We use a hash map to record how many times each prefix sum
-    has appeared before.
+    We use a hash map to record how many times each historical
+    prefix sum has appeared.
     """
 
     prefix_sum = 0
     count = 0
 
-    # key: prefix sum
-    # value: how many times this prefix sum appeared
+    # key: historical prefix sum
+    # value: how many times this prefix sum has appeared
     seen_prefix = {0: 1}
 
     for x in nums:
